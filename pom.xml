@@ -28,4 +28,8 @@
             <version>9.1.0</version>
         </dependency>
     </dependencies>
+    <properties>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
+    </properties>
 </project>

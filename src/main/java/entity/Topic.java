@@ -1,27 +1,26 @@
 package entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
 public class Topic {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "topicId")
     private int id;
 
     @Column(name = "topicName")
     private String name;
 
-    @OneToMany
-    List<Note> list;
+    @OneToMany(mappedBy = "topic" , cascade = CascadeType.ALL)
+    List<Note> noteList;
 
-    public Topic(int id, String name, List<Note> list) {
+    public Topic(int id, String name, List<Note> noteList) {
         this.id = id;
         this.name = name;
-        this.list = list;
+        this.noteList = noteList;
     }
 
     public Topic() {
@@ -43,12 +42,12 @@ public class Topic {
         this.name = name;
     }
 
-    public List<Note> getList() {
-        return list;
+    public List<Note> getNoteList() {
+        return noteList;
     }
 
-    public void setList(List<Note> list) {
-        this.list = list;
+    public void setNoteList(List<Note> noteList) {
+        this.noteList = noteList;
     }
 
     @Override
@@ -56,7 +55,7 @@ public class Topic {
         return "Topic{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", list=" + list +
+                ", noteList=" + noteList +
                 '}';
     }
 }
