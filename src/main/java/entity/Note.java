@@ -12,6 +12,7 @@ public class Note {
     private String note;
 
     @ManyToOne
+    @JoinColumn(name = "topicId")
     private Topic topic;
 
     public Note(int id, String note, Topic topic) {

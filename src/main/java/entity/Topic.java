@@ -14,7 +14,7 @@ public class Topic {
     @Column(name = "topicName")
     private String name;
 
-    @OneToMany(mappedBy = "topic" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
     List<Note> noteList;
 
     public Topic(int id, String name, List<Note> noteList) {
